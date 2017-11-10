@@ -1,0 +1,107 @@
+﻿{
+  "AgreementNumber": "Map(AgreementDocument).Region",
+  "CompanyAdministratorAddressLine1": "",
+  "CompanyAdministratorAddressLine2": "",
+  "CompanyAdministratorCity": "",
+  "CompanyAdministratorContactName": "",
+  "CompanyAdministratorContactPhone": "",
+  "CompanyAdministratorCountry": "",
+  "CompanyAdministratorEmail": "",
+  "CompanyAdministratorFax": "",
+  "CompanyAdministratorName": "",
+  "CompanyAdministratorPostalCode": "",
+  "CompanyAdministratorState": "",
+  "CompanyName": "Map((AgreementDocument.Contacts[Key=SP])).CompanyName",
+  "CompanyVAT": "",
+  "CountryOfIncorporation": "Map(AgreementDocument.Contacts[Key=SP]).Country",
+  "DocumentType": "Map(AgreementDocument).DocumentType",
+  "DocumentVersion": "",
+  "NoticeContactAddressLine1": "Map(AgreementDocument.Contacts[Key=P1]  ).AddressLine1",
+  "NoticeContactAddressLine2": "",
+  "NoticeContactCity": "",
+  "NoticeContactCompanyName": "",
+  "NoticeContactContactName": "",
+  "NoticeContactContactPhone": "",
+  "NoticeContactCountry": "",
+  "NoticeContactEmail": "",
+  "NoticeContactFax": "",
+  "NoticeContactPostalCode": "",
+  "NoticeContactState": "",
+  "PartnerProgram": "MapArray({'Enrollment': Map(AgreementDocument.Enrollments=>Key=Blank.Name), 'POANNumber': Map(AgreementDocument.Enrollments=>Key=Blank.Name)})",
+  "PartnerProgram1": "[MapArray(AgreementDocument.Enrollments[Key=Blank]) { 'Enrollment': Name },{'POANNumber': Name}]",
+  "PartnerTitle": "Map(AgreementDocument).PartnerTitle",
+  "PAXDAgreementNumbers": [
+    {
+      "Number": ""
+    }
+  ],
+  "PAXDBillingContact": "[MapArray(AgreementDocument.Contacts[Key='Blank']) {'AddressLine1': AddressLine1, 'AddressLine2': AddressLine2, 'City':City, 'CompanyName': CompanyName, 'Email':Email, 'ContactName':ContactName, 'Country': Country, 'PostalCode':PostalCode, 'State': State",
+  "PAXDNotificationContact": [
+    {
+      "AddressLine1": "",
+      "AddressLine2": "",
+      "City": "",
+      "CompanyName": "",
+      "Email": "",
+      "ContactName": "",
+      "ContactPhone": "",
+      "Country": "",
+      "Fax": "",
+      "PostalCode": "",
+      "State": ""
+    }
+  ],
+  "PAXIAgreementNumbers": [
+    {
+      "Number": ""
+    }
+  ],
+  "PAXIBillingContact": [
+    {
+      "AddressLine1": "",
+      "AddressLine2": "",
+      "City": "",
+      "CompanyName": "",
+      "Email": "",
+      "ContactName": "",
+      "ContactPhone": "",
+      "Country": "",
+      "Fax": "",
+      "PostalCode": "",
+      "State": ""
+    }
+  ],
+  "PAXINotificationContact": [
+    {
+      "AddressLine1": "",
+      "AddressLine2": "",
+      "City": "",
+      "CompanyName": "",
+      "Email": "",
+      "ContactName": "",
+      "ContactPhone": "",
+      "Country": "",
+      "Fax": "",
+      "PostalCode": "",
+      "State": ""
+    }
+  ],
+  "PAXOAgreementNumbers": [ { "Number": "" } ],
+  "PAXOBillingContact": "MapArray({ 'AddressLine1': '','AddressLine2': '', 'City': '', 'CompanyName': '','Email': '','ContactName': '','ContactPhone': '','Country': '', 'Fax': '','PostalCode': '','State': '' })",
+  "PAXONotificationContact": [
+    {
+      "AddressLine1": "",
+      "AddressLine2": "",
+      "City": "",
+      "CompanyName": "",
+      "Email": "",
+      "ContactName": "",
+      "ContactPhone": "",
+      "Country": "",
+      "Fax": "",
+      "PostalCode": "",
+      "State": ""
+    }
+  ],
+  "Region": "Map(AgreementDocument).Region"
+}

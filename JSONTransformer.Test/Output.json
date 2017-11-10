@@ -1,0 +1,43 @@
+﻿{
+  "AgreementNumber": "5000386",
+  "CompanyAdministratorAddressLine1": "Address Line 1 Admin",
+  "CompanyAdministratorAddressLine2": "Address Line 2 Admin",
+  "CompanyAdministratorCity": "Admin City",
+  "NestedObject":  "Hello",
+  "CompanyAdministratorContactName": "Admin ContactName",
+  "CompanyAdministratorPostalCode": "121006",
+  "CompanyAdministratorState": "Admin State",
+  "PAXOAgreementNumbers": [
+    {
+      "Number": "5000386"
+    },
+    {
+      "Number": "5000387"
+    }
+  ],
+  "PAXOBillingContact": [
+    {
+      "AddressLine1": "Address Line 1 BP",
+      "AddressLine2": "Address Line 2 BP",
+      "City": "City BP",
+      "PostalCode": "121006",
+      "State": "State BP"
+    },
+    {
+      "AddressLine1": "Address Line 1 Enr",
+      "AddressLine2": "Address Line 2 Enr",
+      "City": "City BP Enr",
+      "PostalCode": "121006",
+      "State": "State BP Enr"
+    }
+  ],
+  "PAXONotificationContact": [
+    {
+      "AddresLine1": "Address Line 1 Notification",
+      "AddressLine2": "Address Line 2 Notification",
+      "City": "City Notification",
+      "State": "State Notification",
+      "PostalCode": "121006"
+    }
+  ]
+}
