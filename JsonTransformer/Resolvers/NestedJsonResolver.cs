@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace JsonTransformer
 {
-    public class NestedJsonResolver : Resolver
+    internal class NestedJsonResolver : Resolver
     {
         public override JToken ProcessJson(string jTokenValue, JToken inputObject)
         {

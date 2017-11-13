@@ -21,10 +21,8 @@ namespace JSONTransformer.Test
         {
             var inputagreementJson = File.ReadAllText("Input.json");
             var outputagreementJson = File.ReadAllText("Output.json");
-            //_mapperJson = File.ReadAllText("Mapper.json");
             _inputObject = JObject.Parse(inputagreementJson);
             _outputObject = JObject.Parse(outputagreementJson);
-           // _mapperObject = JObject.Parse(_mapperJson);
         }
 
         [TestMethod]

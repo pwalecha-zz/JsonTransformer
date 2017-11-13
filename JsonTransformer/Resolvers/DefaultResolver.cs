@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace JsonTransformer
 {
-    public class DefaultResolver : Resolver
+    internal class DefaultResolver : Resolver
     {
         private int indexOfSpecialChar = -1;
         public override JToken ProcessJson(string jTokenValue, JToken inputObject)

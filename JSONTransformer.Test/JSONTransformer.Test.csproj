@@ -67,9 +67,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ObjectToObjectMapper\JsonTranformer.csproj">
-      <Project>{D6D16DE0-08DC-4314-A3BE-FCF0BD8E3E07}</Project>
-      <Name>JsonTranformer</Name>
+    <ProjectReference Include="..\JsonTransformer\JsonTransformer.csproj">
+      <Project>{ffbe3db7-6a58-4d5a-8ef6-552694fef569}</Project>
+      <Name>JsonTransformer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

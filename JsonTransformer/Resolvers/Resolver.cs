@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JsonTransformer
 {
-    public abstract class Resolver
+    internal abstract class Resolver
     {
 
         public const string Separator = ",";

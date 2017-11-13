@@ -1,0 +1,104 @@
+﻿{
+  "Key": "id132",
+  "AgreementNumber": "5000386",
+  "Enrollments": [ {} ],
+  "Parent": {
+    "NestedObject":  "Hello"
+  },
+  "Contacts": [
+    {
+      "Type": "P1",
+      "NameCode": "GPA",
+      "AddressLine1": "Address Line 1",
+      "AddressLine2": "Address Line 2",
+      "City": "City",
+      "State": "State",
+      "PostalCode": "121006",
+      "ContactName": "P1 ContactName"
+    },
+    {
+      "Type": "CA",
+      "NameCode": "GPA",
+      "AddressLine1": "Address Line 1 Admin",
+      "AddressLine2": "Address Line 2 Admin",
+      "City": "Admin City",
+      "State": "Admin State",
+      "PostalCode": "121006"
+    }
+  ],
+  "SubAgreements": [
+    {
+      "AgreementNumber": "5000386",
+      "NameCode": "PAXO",
+      "Enrollments": [
+        {
+          "Name": "Windows Devices",
+          "NameCode": "WindowDevice"
+        }
+      ],
+      "Contacts": [
+        {
+          "Type": "P1",
+          "AddressLine1": "Address Line 1 Notification",
+          "AddressLine2": "Address Line 2 Notification",
+          "City": "City Notification",
+          "State": "State Notification",
+          "PostalCode": "121006"
+        },
+        {
+          "Type": "BP",
+          "AddressLine1": "Address Line 1 BP",
+          "AddressLine2": "Address Line 2 BP",
+          "City": "City BP",
+          "State": "State BP",
+          "PostalCode": "121006"
+        },
+        {
+          "Type": "BP",
+          "AddressLine1": "Address Line 1 Enr",
+          "AddressLine2": "Address Line 2 Enr",
+          "City": "City BP Enr",
+          "State": "State BP Enr",
+          "PostalCode": "121006"
+        }
+      ]
+    },
+    {
+      "AgreementNumber": "5000387",
+      "NameCode": "PAXI",
+      "Enrollments": [
+        {
+          "Name": "Windows Devices",
+          "NameCode": "WindowDevice"
+        }
+      ],
+      "Contacts": [
+        {
+          "Type": "P1",
+          "AddresLine1": "Address Line 1",
+          "AddressLine2": "Address Line 2",
+          "City": "City",
+          "State": "State",
+          "PostalCode": "121006"
+        },
+        {
+          "Type": "BP",
+          "AddressLine1": "Address Line 1 BP",
+          "AddressLine2": "Address Line 2 BP",
+          "City": "City BP",
+          "State": "State BP",
+          "PostalCode": "121006"
+        },
+        {
+          "Type": "BP",
+          "AddressLine1": "Address Line 1 BP",
+          "AddressLine2": "Address Line 2 BP",
+          "City": "City BP",
+          "State": "State BP",
+          "PostalCode": "121006"
+        }
+      ]
+    }
+  ]
+
+}

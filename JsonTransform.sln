@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTranformer", "ObjectToObjectMapper\JsonTranformer.csproj", "{D6D16DE0-08DC-4314-A3BE-FCF0BD8E3E07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTranformerClient", "ObjectToObjectMapper\JsonTranformerClient.csproj", "{D6D16DE0-08DC-4314-A3BE-FCF0BD8E3E07}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONTransformer.Test", "JSONTransformer.Test\JSONTransformer.Test.csproj", "{60A04A34-4EC2-4D91-B748-5355E610412B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTransformer", "JsonTransformer\JsonTransformer.csproj", "{FFBE3DB7-6A58-4D5A-8EF6-552694FEF569}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{60A04A34-4EC2-4D91-B748-5355E610412B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60A04A34-4EC2-4D91-B748-5355E610412B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60A04A34-4EC2-4D91-B748-5355E610412B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFBE3DB7-6A58-4D5A-8EF6-552694FEF569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFBE3DB7-6A58-4D5A-8EF6-552694FEF569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFBE3DB7-6A58-4D5A-8EF6-552694FEF569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFBE3DB7-6A58-4D5A-8EF6-552694FEF569}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

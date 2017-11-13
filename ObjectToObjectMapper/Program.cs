@@ -14,7 +14,6 @@ namespace ObjectToObjectMapper
         static void Main(string[] args)
         {
             Console.Read();
-            
         }
 
     }

@@ -1,0 +1,14 @@
+﻿{
+  "AgreementNumber": "{AgreementNumber}",
+  "NestedObject": "Parent.{NestedObject}",
+  "CompanyAdministratorAddressLine1": "Contacts[Type='CA'].{AddressLine1}",
+  "CompanyAdministratorAddressLine2": "Contacts[Type='CA'].{AddressLine2}",
+  "CompanyAdministratorCity": "Contacts[Type='CA'].{City}",
+  "CompanyAdministratorContactName": "Map(Contacts[Type='CA'].{ContactName})",
+  "CompanyAdministratorPostalCode": "Map(Contacts[Type='CA'].{PostalCode})",
+  "CompanyAdministratorState": "Map(Contacts[Type='CA'].{State})",
+  "PAXOAgreementNumbers": "MapArray(SubAgreements[NameCode='PAXO'].{Number})",
+  "PAXOBillingContact": "SubAgreements[NameCode='PAXO'].Contacts[Type='BP'].{AddressLine1, AddressLine2, City, PostalCode, State}",
+  "PAXONotificationContact": "MapArray(SubAgreements[NameCode='PAXO'].Contacts[Type='P1'].{AddressLine1, AddressLine2, City, PostalCode, State})",
+  "Region": "Map(AgreementDocument).{Region}"
+}
