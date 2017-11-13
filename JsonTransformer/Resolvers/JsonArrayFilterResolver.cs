@@ -13,11 +13,12 @@ namespace JsonTransformer
         public override JToken ProcessJson(string jTokenValue, JToken inputObject)
         {
             string[] conditions = jTokenValue.Split(new string[] { Separator }, StringSplitOptions.RemoveEmptyEntries);
-            IEnumerable<JToken> tokens = null;
+            IEnumerable<JToken> tokens = (inputObject as JArray);
+
             foreach(var condition in conditions)
             {
                 string[] splitKeyValues = condition.Split(new char[] { '=' });
-                tokens = (inputObject as JArray).Where(x => x.Value<string>(splitKeyValues[0].Trim()) == splitKeyValues[1].Trim().Replace("'", string.Empty));
+                tokens = tokens.Where(x => x.Value<string>(splitKeyValues[0].Trim()) == splitKeyValues[1].Trim().Replace("'", string.Empty));
             }
 
             var jArray = new JArray(tokens);

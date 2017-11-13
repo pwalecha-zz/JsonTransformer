@@ -12,25 +12,65 @@ namespace JsonTransformer
     {
         public override JToken ProcessJson(string jTokenValue, JToken inputObject)
         {
-            if (jTokenValue.Contains(Separator)) {
+            if (inputObject != null)
+            {
                 var inputArray = inputObject as JArray;
                 JArray outputArray = new JArray();
-                foreach (var row in inputArray)
+                if (inputArray is null)
                 {
-                    JObject input = new JObject();
-                    string[] splitSelectValues = jTokenValue.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (var val in splitSelectValues)
-                    {
-                        input[val.Trim()] = row[val.Trim()];
-                    }
-
-                    outputArray.Add(input);
+                    return jTokenValue.Contains(Separator) ? GetComplexObject(inputObject, jTokenValue) : inputObject[jTokenValue];
                 }
 
-                return outputArray as JToken;
+                return GetSelectTokens(inputArray, jTokenValue);
+            }
+
+            return null;
+        }
+
+        private string GetSelectKey(string token, bool value = false)
+        {
+            var splitValues = token.Split(new char[] { '=' });
+            if (value && splitValues.Length == 2)
+                return splitValues[1];
+
+            return splitValues.Length == 2 ? splitValues[0] : token;
+        }
+
+        private JObject GetComplexObject(JToken input, string selectAttribute)
+        {
+            JObject output = new JObject();
+            string[] splitSelectValues = selectAttribute.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (splitSelectValues.Length > 0)
+            {
+                foreach (var val in splitSelectValues)
+                {
+                    output[GetSelectKey(val.Trim())] = input[GetSelectKey(val.Trim(),true).Trim()];
+                }
             }
             else
-                return inputObject[jTokenValue];
+            {
+                output[GetSelectKey(selectAttribute.Trim())] = input[GetSelectKey(selectAttribute.Trim(), true)];
+            }
+
+            return output;
+        }
+
+        private string GetTransformedName(string selectToken)
+        {
+            var splitValues = selectToken.Split(new char[] { '=' });
+            return splitValues.Length == 2 ? splitValues[1] : selectToken;
+        }
+
+        private JArray GetSelectTokens(JArray inputArray, string selectAttribute)
+        {
+            JArray outputArray = new JArray();
+            foreach (var row in inputArray)
+            {
+                outputArray.Add(GetComplexObject(row, selectAttribute));
+            }
+
+            return outputArray;
         }
 
     }

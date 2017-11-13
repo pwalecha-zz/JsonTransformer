@@ -52,5 +52,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JsonTransformer\JsonTransformer.csproj">
+      <Project>{ffbe3db7-6a58-4d5a-8ef6-552694fef569}</Project>
+      <Name>JsonTransformer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

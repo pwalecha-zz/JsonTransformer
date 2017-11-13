@@ -9,7 +9,6 @@ namespace JsonTransformer
 {
     internal class DefaultResolver : Resolver
     {
-        private int indexOfSpecialChar = -1;
         public override JToken ProcessJson(string jTokenValue, JToken inputObject)
         {
             return inputObject[jTokenValue];

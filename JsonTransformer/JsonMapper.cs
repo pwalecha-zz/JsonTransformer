@@ -11,22 +11,38 @@ namespace JsonTransformer
         public JToken Transform(JToken jObject, JToken targetObjectMapper)
         {
             var transformedObject = targetObjectMapper;
+            var targetObject = new  JObject();
+            var originalObject = jObject;
             foreach (var child in transformedObject.Children())
             {
-                JProperty prop = child as JProperty;
-                if (prop != null)
+                try
                 {
-                    string propValue = Convert.ToString(prop.Value);
-                    var transformers = GetListOfResolvers(propValue);
-                    foreach (var transformer in transformers)
+                    JProperty prop = child as JProperty;
+                    var mapperObject = originalObject;
+                    if (prop != null)
                     {
-                        if (!string.IsNullOrWhiteSpace(transformer.Item1))
-                            jObject = transformer.Item2.ProcessJson(transformer.Item1, jObject);
+                        string propValue = Convert.ToString(prop.Value);
+                        var transformers = GetListOfResolvers(propValue);
+                        foreach (var transformer in transformers)
+                        {
+                            if (!string.IsNullOrWhiteSpace(transformer.Item1))
+                                mapperObject = transformer.Item2.ProcessJson(transformer.Item1, mapperObject);
+                        }
+
                     }
+
+                    targetObject[prop.Name] = mapperObject;
                 }
+                catch(Exception exception)
+                {
+                    Console.WriteLine(exception.Message);
+                    throw;
+                }
+
+
             }
 
-            return jObject;
+            return targetObject;
         }
         private static List<int> AllIndexOf(string text, string str, StringComparison comparisonType)
         {
