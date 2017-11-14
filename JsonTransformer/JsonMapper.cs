@@ -10,10 +10,9 @@ namespace JsonTransformer
     {
         public JToken Transform(JToken jObject, JToken targetObjectMapper)
         {
-            var transformedObject = targetObjectMapper;
             var targetObject = new  JObject();
             var originalObject = jObject;
-            foreach (var child in transformedObject.Children())
+            foreach (var child in targetObjectMapper.Children())
             {
                 try
                 {
@@ -28,7 +27,6 @@ namespace JsonTransformer
                             if (!string.IsNullOrWhiteSpace(transformer.Item1))
                                 mapperObject = transformer.Item2.ProcessJson(transformer.Item1, mapperObject);
                         }
-
                     }
 
                     targetObject[prop.Name] = mapperObject;
@@ -38,24 +36,11 @@ namespace JsonTransformer
                     Console.WriteLine(exception.Message);
                     throw;
                 }
-
-
             }
 
             return targetObject;
         }
-        private static List<int> AllIndexOf(string text, string str, StringComparison comparisonType)
-        {
-            List<int> allIndexOf = new List<int>();
-            int index = text.IndexOf(str, comparisonType);
-            while (index != -1)
-            {
-                allIndexOf.Add(index);
-                index = text.IndexOf(str, index + str.Length, comparisonType);
-            }
-            return allIndexOf;
-        }
-
+        
         private List<Tuple<string, Resolver>> GetListOfResolvers(string mappedJsonValues)
         {
             char[] keys = { Resolver.DotOperator, Resolver.OpeningBrace, Resolver.OpeningRectBracket};
