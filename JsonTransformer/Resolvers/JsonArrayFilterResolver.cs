@@ -7,6 +7,7 @@ namespace JsonTransformer
 {
     internal class JsonArrayFilterResolver : Resolver
     {
+        internal JsonArrayFilterResolver(JProperty property) : base(property) { }
         public override JToken ProcessJson(string jTokenValue, JToken inputObject)
         {
             string[] conditions = jTokenValue.Split(new string[] { Separator }, StringSplitOptions.RemoveEmptyEntries);

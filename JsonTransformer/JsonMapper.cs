@@ -26,7 +26,7 @@ namespace JsonTransformer
                     if (prop != null)
                     {
                         string propValue = Convert.ToString(prop.Value);
-                        var transformers = GetListOfResolvers(Convert.ToString(prop.Value));
+                        var transformers = GetListOfResolvers(prop);
                         
                         foreach (var transformer in transformers)
                         {
@@ -34,7 +34,7 @@ namespace JsonTransformer
                                 mapperObject = transformer.Item2.ProcessJson(transformer.Item1, mapperObject);
                         }
                     }
-                        targetObject[prop.Name] = DecorateValue(prop, mapperObject);
+                        targetObject[prop.Name] = mapperObject;
                 }
             }
 
@@ -57,8 +57,9 @@ namespace JsonTransformer
             return tokenValue;
         }
 
-        private List<Tuple<string, Resolver>> GetListOfResolvers(string mappedJsonValues)
+        private List<Tuple<string, Resolver>> GetListOfResolvers(JProperty property)
         {
+            var mappedJsonValues = Convert.ToString(property.Value);
             char[] keys = { Resolver.DotOperator, Resolver.OpeningBrace, Resolver.OpeningRectBracket};
             var list = new List<Tuple<string, Resolver>>();
             Dictionary<char, char> dic = new Dictionary<char, char>();
@@ -71,7 +72,7 @@ namespace JsonTransformer
                 var charAtMatchingIndex = mappedJsonValues[firstIndexofAny];
                 if(list.Count() == 0 && firstIndexofAny > 0)
                 {
-                    list.Add(new Tuple<string, Resolver>(mappedJsonValues.Substring(0,firstIndexofAny), new DefaultResolver()));
+                    list.Add(new Tuple<string, Resolver>(mappedJsonValues.Substring(0,firstIndexofAny), new DefaultResolver(property)));
                     mappedJsonValues =  mappedJsonValues.Remove(0, firstIndexofAny);
                 }
                 else
@@ -79,21 +80,21 @@ namespace JsonTransformer
                     if(charAtMatchingIndex != Resolver.DotOperator)
                     {
                         var wholevalue = mappedJsonValues.Substring(firstIndexofAny+ 1, mappedJsonValues.IndexOf(dic[charAtMatchingIndex]) -1);
-                        list.Add(new Tuple<string, Resolver>(wholevalue, Resolver.ResolveMapper(charAtMatchingIndex.ToString())));
+                        list.Add(new Tuple<string, Resolver>(wholevalue, Resolver.ResolveMapper(property, charAtMatchingIndex.ToString())));
                         mappedJsonValues = mappedJsonValues.Remove(firstIndexofAny, mappedJsonValues.IndexOf(dic[charAtMatchingIndex])+ 1);
                     }
                     else
                     {
                         if (mappedJsonValues.IndexOfAny(keys, firstIndexofAny + 1) == 0) continue;
                         var val = mappedJsonValues.Substring(firstIndexofAny + 1, mappedJsonValues.IndexOfAny(keys, firstIndexofAny + 1) -1);
-                        list.Add(new Tuple<string, Resolver>(val, Resolver.ResolveMapper(charAtMatchingIndex.ToString())));
+                        list.Add(new Tuple<string, Resolver>(val, Resolver.ResolveMapper(property, charAtMatchingIndex.ToString())));
                         mappedJsonValues =mappedJsonValues.Remove(firstIndexofAny, mappedJsonValues.IndexOfAny(keys, firstIndexofAny + 1));
                     }
                 }
             }
 
             if (!string.IsNullOrWhiteSpace(mappedJsonValues))
-                list.Add(new Tuple<string, Resolver>(mappedJsonValues, new DirectValuesResolver()));
+                list.Add(new Tuple<string, Resolver>(mappedJsonValues, new DirectValuesResolver(property)));
 
             return list;
         }

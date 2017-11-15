@@ -5,6 +5,8 @@ namespace JsonTransformer
 {
     internal class JsonSelectResolver : Resolver
     {
+        internal JsonSelectResolver(JProperty property) : base(property) { }
+
         public override JToken ProcessJson(string jTokenValue, JToken inputObject)
         {
             if (inputObject != null)

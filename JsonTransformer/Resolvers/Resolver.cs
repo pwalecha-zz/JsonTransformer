@@ -4,6 +4,8 @@ namespace JsonTransformer
 {
     internal abstract class Resolver
     {
+        protected JProperty property;
+        protected Resolver(JProperty prop) => property = prop;
 
         public const string Separator = ",";
         public const char OpeningBrace = '{';
@@ -14,21 +16,21 @@ namespace JsonTransformer
 
         public abstract JToken ProcessJson(string jTokenValue, JToken inputObject);
 
-        public static Resolver ResolveMapper(string token)
+        public static Resolver ResolveMapper(JProperty property, string token)
         {
             var tokenValue = (char)token?.Trim()[0];
             
             switch (tokenValue)
             {
                 case OpeningRectBracket:
-                    return new JsonArrayFilterResolver();
+                    return new JsonArrayFilterResolver(property);
                 case DotOperator:
-                    return new NestedJsonResolver();
+                    return new NestedJsonResolver(property);
                 case OpeningBrace:
-                    return new JsonSelectResolver();
+                    return new JsonSelectResolver(property);
             }
        
-            return new DefaultResolver();
+            return new DefaultResolver(property);
         }
     }
 }
