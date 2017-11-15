@@ -41,22 +41,6 @@ namespace JsonTransformer
             return targetObject;
         }
 
-        private JToken DecorateValue(JProperty property, JToken tokenValue)
-        {
-            if (property != null)
-            {
-                switch (property.Value.Type)
-                {
-                    case JTokenType.Boolean: 
-                    case JTokenType.Integer: return property.Value;
-                    default:
-                        return tokenValue;
-                }
-            }
-
-            return tokenValue;
-        }
-
         private List<Tuple<string, Resolver>> GetListOfResolvers(JProperty property)
         {
             var mappedJsonValues = Convert.ToString(property.Value);
@@ -101,4 +85,3 @@ namespace JsonTransformer
         
     }
 }
-
