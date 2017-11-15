@@ -12,35 +12,51 @@ namespace JsonTransformer
         {
             var targetObject = new  JObject();
             var originalObject = jObject;
+            
             foreach (var child in targetObjectMapper.Children())
             {
-                try
+                JProperty prop = child as JProperty;
+                if (prop?.Value.Type == JTokenType.Object)
                 {
-                    JProperty prop = child as JProperty;
+                    targetObject[prop.Name] = Transform(jObject, prop.Value);
+                }
+                else 
+                {
                     var mapperObject = originalObject;
                     if (prop != null)
                     {
                         string propValue = Convert.ToString(prop.Value);
-                        var transformers = GetListOfResolvers(propValue);
+                        var transformers = GetListOfResolvers(Convert.ToString(prop.Value));
+                        
                         foreach (var transformer in transformers)
                         {
                             if (!string.IsNullOrWhiteSpace(transformer.Item1))
                                 mapperObject = transformer.Item2.ProcessJson(transformer.Item1, mapperObject);
                         }
                     }
-
-                    targetObject[prop.Name] = mapperObject;
-                }
-                catch(Exception exception)
-                {
-                    Console.WriteLine(exception.Message);
-                    throw;
+                        targetObject[prop.Name] = DecorateValue(prop, mapperObject);
                 }
             }
 
             return targetObject;
         }
-        
+
+        private JToken DecorateValue(JProperty property, JToken tokenValue)
+        {
+            if (property != null)
+            {
+                switch (property.Value.Type)
+                {
+                    case JTokenType.Boolean: 
+                    case JTokenType.Integer: return property.Value;
+                    default:
+                        return tokenValue;
+                }
+            }
+
+            return tokenValue;
+        }
+
         private List<Tuple<string, Resolver>> GetListOfResolvers(string mappedJsonValues)
         {
             char[] keys = { Resolver.DotOperator, Resolver.OpeningBrace, Resolver.OpeningRectBracket};
@@ -75,6 +91,9 @@ namespace JsonTransformer
                     }
                 }
             }
+
+            if (!string.IsNullOrWhiteSpace(mappedJsonValues))
+                list.Add(new Tuple<string, Resolver>(mappedJsonValues, new DirectValuesResolver()));
 
             return list;
         }

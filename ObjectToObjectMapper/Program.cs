@@ -19,7 +19,8 @@ namespace ObjectToObjectMapper
             JsonMapper transformer = new JsonMapper();
             JObject inputObject = JObject.Parse(input);
             JObject mapperObject = JObject.Parse(mapper);
-            var transformedObject = transformer.Transform(inputObject, mapperObject);
+            var transformedObject = transformer.Transform(inputObject, mapperObject.Root);
+            var json = JsonConvert.SerializeObject(transformedObject);
             Console.Read();
 
         }

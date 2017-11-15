@@ -13,7 +13,13 @@ namespace JsonTransformer
                 JArray outputArray = new JArray();
                 if (inputArray is null)
                 {
-                    return jTokenValue.Contains(Separator) ? GetComplexObject(inputObject, jTokenValue) : inputObject[jTokenValue];
+                    if (jTokenValue.Contains(Separator))
+                    {
+                        outputArray.Add(GetComplexObject(inputObject, jTokenValue));
+                        return outputArray;
+                    }
+                    else
+                        return inputObject[jTokenValue];
                 }
 
                 return GetSelectTokens(inputArray, jTokenValue);

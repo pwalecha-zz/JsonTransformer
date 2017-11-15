@@ -10,12 +10,9 @@ namespace JSONTransformer.Test
     [TestClass]
     public class JsonTransformertest
     {
-        
-        private string _mapperJson;
         private JObject _inputObject;
         private JObject _outputObject;
-        private JObject _mapperObject;
-
+        
         [TestInitialize]
         public void Initialize()
         {
